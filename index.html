@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+        }
+        .watch-container{
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .watch-container p{
+            padding: 5px;
+            letter-spacing: 1px;
+            font-size: 72px;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        }
+        .watch-container p span{
+            box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+        }
+        .clock-button{
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            color: white;
+            border-radius: 5px;
+            min-width: 170px;
+            font-size: 20px;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        }
+        #start{
+            background-color: green;
+        }
+        #stop{
+            background-color: red;
+        }
+        #reset{
+            background-color: darkgrey;
+        }
+        .min-width{
+            display: inline-block;
+            min-width: 100px;
+            text-align: center;
+            font-size: 70px;
+            padding: 10px;
+        }
+        .stopwatch-buttons{
+            margin-top: 20px;
+        }
+        .input-items{
+            display: flex;
+            margin: 10px;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        }
+        .input-box{
+            width: 108px;
+            height: 65px;
+            margin: 5px;
+            padding:5px;
+            font-size: 40px;
+            border: none;
+            outline: none;
+            box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+        }
+        .input-group{
+            display: flex;
+            flex-direction: column;
+        }
+        .input-label{
+            margin: 5px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+
+<div class="watch-container">
+    
+    <div id="inputContainer" class="input-items">
+        <div class="input-group">
+            <label class="input-label">Hour:</label>
+            <input onchange="SetTimerValue()" id="inputHour" placeholder="00" class="input-box" type="number">
+        </div>
+        <div class="input-group">
+            <label class="input-label">Minute:</label>
+            <input onchange="SetTimerValue()" id="inputMinute" placeholder="00" class="input-box" type="number">
+        </div>
+        <div class="input-group">
+            <label class="input-label">Second:</label>
+            <input onchange="SetTimerValue()" id="inputSecond" placeholder="00" class="input-box" type="number">
+        </div>
+    </div>
+
+    <p id="outputContainer"><span class="min-width" id="hour">00</span> : <span class="min-width" id="minute">00</span> : <span class="min-width" id="second">00</span></p>
+    
+    <div class="stopwatch-buttons">
+        <button onclick="StartClock()" class="clock-button" id="start">Start</button>
+        <button onclick="StopClock()" class="clock-button" id="stop">Stop</button>
+        <button onclick="ResetClock()" class="clock-button" id="reset">Reset</button>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    var inputHour;
+    var inputMinute;
+    var inputSecond;
+    var hour = document.getElementById("hour");
+    var minute = document.getElementById("minute");
+    var second = document.getElementById("second");
+    var start = document.getElementById("start");
+    var Stop = document.getElementById("stop");
+    var stopWatch;
+    var outputContainer = document.getElementById("outputContainer");
+
+    Stop.style.display = "none";
+    outputContainer.style.display = "none";
+
+    function SetTimerValue()
+    {
+        inputHour = Number(document.getElementById("inputHour").value);
+        inputMinute = Number(document.getElementById("inputMinute").value);
+        inputSecond = Number(document.getElementById("inputSecond").value);
+    }
+
+    function StartClock()
+    {
+        debugger
+        if(inputHour > 0 || inputMinute > 0 || inputSecond > 0)
+        {
+            hour.innerHTML = FormatTime(inputHour);
+            outputContainer.style.display = "flex";
+            start.style.display = "none";
+            Stop.style.display = "inline-block";
+            stopWatch = setInterval(myClock, 1000);
+        }
+    }
+
+    function StopClock()
+    {
+        start.style.display = "inline-block";
+        Stop.style.display = "none";
+    
+        clearInterval(stopWatch);
+    }
+
+    function ResetClock()
+    {
+        StopClock();
+        outputContainer.style.display = "none";
+        document.getElementById("inputHour").value = "";
+        document.getElementById("inputMinute").value = "";
+        document.getElementById("inputSecond").value = "";
+        hour.innerHTML = "00";
+        minute.innerHTML = "00";
+        second.innerHTML = "00";
+        inputHour = 0;
+        inputMinute = 0;
+        inputSecond = 0;
+    }
+        
+    function myClock()
+    {      
+        if(inputSecond <= 0)
+        {
+            if(inputMinute <= 0)
+            {
+                if(inputHour == 0 && inputMinute == 0 && inputSecond ==0)
+                {
+                    StopClock();
+                    new Audio('./beep.mp3').play()
+                    return;
+                }
+                else
+                {
+                    inputHour--;
+                }
+                hour.innerHTML = FormatTime(inputHour);
+                inputMinute = 60;
+            }
+            inputMinute--;
+            minute.innerHTML = FormatTime(inputMinute);
+            inputSecond = 60;
+        }
+        inputSecond--;
+        second.innerHTML = FormatTime(inputSecond);
+        
+    }
+    
+    function FormatTime(time)
+    {
+        var formatedTime
+        if(time < 10)
+        {
+            formatedTime = "0" + time.toString();
+        }
+        else
+        {
+            formatedTime = time;
+        }
+        return formatedTime
+    }
+</script>
+
+</body>
+</html>
