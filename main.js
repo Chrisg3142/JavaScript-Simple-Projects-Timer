@@ -1,9 +1,9 @@
 var inputHour;
 var inputMinute;
 var inputSecond;
-var hour = document.getElementById("hour");
-var minute = document.getElementById("minute");
-var second = document.getElementById("second");
+var outputHour = document.getElementById("outputHour");
+var outputMinute = document.getElementById("outputMinute");
+var outputSecond = document.getElementById("outputSecond");
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
 var stopWatch;
@@ -20,7 +20,7 @@ function StartClock()
 {
     if(inputHour > 0 || inputMinute > 0 || inputSecond > 0)
     {
-        hour.innerHTML = FormatTime(inputHour);
+        outputHour.innerHTML = FormatTime(inputHour);
         outputContainer.style.display = "flex";
         startBtn.style.display = "none";
         stopBtn.style.display = "inline-block";
@@ -43,55 +43,33 @@ function ResetClock()
     document.getElementById("inputHour").value = "";
     document.getElementById("inputMinute").value = "";
     document.getElementById("inputSecond").value = "";
-    hour.innerHTML = "00";
-    minute.innerHTML = "00";
-    second.innerHTML = "00";
+    outputHour.innerHTML = "00";
+    outputMinute.innerHTML = "00";
+    outputSecond.innerHTML = "00";
     inputHour = 0;
     inputMinute = 0;
     inputSecond = 0;
 }
     
 function myClock()
-{      
-    // if(inputSecond <= 0)
-    // {
-    //     if(inputMinute <= 0)
-    //     {
-    //         if(inputHour == 0 && inputMinute == 0 && inputSecond ==0)
-    //         {
-    //             StopClock();
-    //             new Audio('./beep.mp3').play()
-    //             return;
-    //         }
-    //         else
-    //         {
-    //             inputHour--;
-    //         }
-    //         hour.innerHTML = FormatTime(inputHour);
-    //         inputMinute = 60;
-    //     }
-    //     inputMinute--;
-    //     minute.innerHTML = FormatTime(inputMinute);
-    //     inputSecond = 60;
-    // }
-    // inputSecond--;
-    // second.innerHTML = FormatTime(inputSecond);
-
-    //debugger;
-
+{  
     if(inputSecond > 0){
         inputSecond--;
-        second.innerHTML = FormatTime(inputSecond);
+        outputSecond.innerHTML = FormatTime(inputSecond);
     }else{
         if(inputMinute > 0){
             inputMinute--;
-            minute.innerHTML = FormatTime(inputMinute);
-            inputSecond = 60;
+            outputMinute.innerHTML = FormatTime(inputMinute);
+            inputSecond = 59;
+            outputSecond.innerHTML = FormatTime(inputSecond);
         }else{
             if(inputHour > 0){
                 inputHour--;
-                hour.innerHTML = FormatTime(inputHour);
+                outputHour.innerHTML = FormatTime(inputHour);
                 inputMinute = 59;
+                outputMinute.innerHTML = FormatTime(inputMinute);
+                inputSecond = 59;
+                outputSecond.innerHTML = FormatTime(inputSecond);
             }else{
                 StopClock();
                 new Audio('./beep.mp3').play()
@@ -99,7 +77,6 @@ function myClock()
             }
         }
     }
-
 }
 
 function FormatTime(time)
