@@ -82,3 +82,10 @@ body{
 #outputContainer{
     display: none;
 }
+.project-heading{
+    margin-bottom: 20px;
+}
+.project-heading h1{
+    text-transform: capitalize;
+    font-size: 40px;
+}
