@@ -53,29 +53,53 @@ function ResetClock()
     
 function myClock()
 {      
-    if(inputSecond <= 0)
-    {
-        if(inputMinute <= 0)
-        {
-            if(inputHour == 0 && inputMinute == 0 && inputSecond ==0)
-            {
+    // if(inputSecond <= 0)
+    // {
+    //     if(inputMinute <= 0)
+    //     {
+    //         if(inputHour == 0 && inputMinute == 0 && inputSecond ==0)
+    //         {
+    //             StopClock();
+    //             new Audio('./beep.mp3').play()
+    //             return;
+    //         }
+    //         else
+    //         {
+    //             inputHour--;
+    //         }
+    //         hour.innerHTML = FormatTime(inputHour);
+    //         inputMinute = 60;
+    //     }
+    //     inputMinute--;
+    //     minute.innerHTML = FormatTime(inputMinute);
+    //     inputSecond = 60;
+    // }
+    // inputSecond--;
+    // second.innerHTML = FormatTime(inputSecond);
+
+    //debugger;
+
+    if(inputSecond > 0){
+        inputSecond--;
+        second.innerHTML = FormatTime(inputSecond);
+    }else{
+        if(inputMinute > 0){
+            inputMinute--;
+            minute.innerHTML = FormatTime(inputMinute);
+            inputSecond = 60;
+        }else{
+            if(inputHour > 0){
+                inputHour--;
+                hour.innerHTML = FormatTime(inputHour);
+                inputMinute = 59;
+            }else{
                 StopClock();
                 new Audio('./beep.mp3').play()
                 return;
             }
-            else
-            {
-                inputHour--;
-            }
-            hour.innerHTML = FormatTime(inputHour);
-            inputMinute = 60;
         }
-        inputMinute--;
-        minute.innerHTML = FormatTime(inputMinute);
-        inputSecond = 60;
     }
-    inputSecond--;
-    second.innerHTML = FormatTime(inputSecond);
+
 }
 
 function FormatTime(time)
