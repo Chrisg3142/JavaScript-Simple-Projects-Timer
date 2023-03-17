@@ -88,7 +88,7 @@ function FormatTime(time)
     }
     else
     {
-        formatedTime = time;
+        formatedTime = time.toString();
     }
     return formatedTime
 }
