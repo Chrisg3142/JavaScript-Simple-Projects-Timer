@@ -6,7 +6,7 @@ var outputMinute = document.getElementById("outputMinute");
 var outputSecond = document.getElementById("outputSecond");
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
-var stopWatch;
+ var timer;
 var outputContainer = document.getElementById("outputContainer");
 
 function SetTimerValue()
@@ -21,10 +21,12 @@ function StartClock()
     if(inputHour > 0 || inputMinute > 0 || inputSecond > 0)
     {
         outputHour.innerHTML = FormatTime(inputHour);
+        outputMinute.innerHTML = FormatTime(inputMinute);
+        outputSecond.innerHTML = FormatTime(inputSecond);
         outputContainer.style.display = "flex";
         startBtn.style.display = "none";
         stopBtn.style.display = "inline-block";
-        stopWatch = setInterval(myClock, 1000);
+        timer = setInterval(myClock, 1000);
     }
 }
 
@@ -33,7 +35,7 @@ function StopClock()
     startBtn.style.display = "inline-block";
     stopBtn.style.display = "none";
 
-    clearInterval(stopWatch);
+    clearInterval(timer);
 }
 
 function ResetClock()
