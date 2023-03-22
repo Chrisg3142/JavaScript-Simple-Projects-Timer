@@ -14,7 +14,7 @@ function StartClock()
     inputHour = Number(document.getElementById("inputHour").value);
     inputMinute = Number(document.getElementById("inputMinute").value);
     inputSecond = Number(document.getElementById("inputSecond").value);
-    
+
     if(inputHour > 0 || (inputMinute > 0 && inputMinute < 60)|| (inputSecond > 0 && inputSecond < 60))
     {
         outputHour.innerHTML = FormatTime(inputHour);
@@ -38,7 +38,7 @@ function StopClock()
 {
     startBtn.style.display = "inline-block";
     stopBtn.style.display = "none";
-
+    outputContainer.style.display = "none";
     clearInterval(timerApp);
 }
 
