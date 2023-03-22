@@ -6,19 +6,16 @@ var outputMinute = document.getElementById("outputMinute");
 var outputSecond = document.getElementById("outputSecond");
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
- var timer;
+var timerApp;
 var outputContainer = document.getElementById("outputContainer");
 
-function SetTimerValue()
+function StartClock()
 {
     inputHour = Number(document.getElementById("inputHour").value);
     inputMinute = Number(document.getElementById("inputMinute").value);
     inputSecond = Number(document.getElementById("inputSecond").value);
-}
-
-function StartClock()
-{
-    if(inputHour > 0 || inputMinute > 0 || inputSecond > 0)
+    
+    if(inputHour > 0 || (inputMinute > 0 && inputMinute < 60)|| (inputSecond > 0 && inputSecond < 60))
     {
         outputHour.innerHTML = FormatTime(inputHour);
         outputMinute.innerHTML = FormatTime(inputMinute);
@@ -26,7 +23,14 @@ function StartClock()
         outputContainer.style.display = "flex";
         startBtn.style.display = "none";
         stopBtn.style.display = "inline-block";
-        timer = setInterval(myClock, 1000);
+        timerApp = setInterval(myClock, 1000);
+    }
+    else
+    {
+        document.getElementById("inputHour").value = "";
+        document.getElementById("inputMinute").value = "";
+        document.getElementById("inputSecond").value = "";
+        alert("Enter valid time.");
     }
 }
 
@@ -35,7 +39,7 @@ function StopClock()
     startBtn.style.display = "inline-block";
     stopBtn.style.display = "none";
 
-    clearInterval(timer);
+    clearInterval(timerApp);
 }
 
 function ResetClock()
