@@ -38,7 +38,9 @@ function StopClock()
 {
     startBtn.style.display = "inline-block";
     stopBtn.style.display = "none";
-    outputContainer.style.display = "none";
+    outputHour.innerHTML = "00";
+    outputMinute.innerHTML = "00";
+    outputSecond.innerHTML = "00";
     clearInterval(timerApp);
 }
 
