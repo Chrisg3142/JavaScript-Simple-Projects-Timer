@@ -102,16 +102,25 @@ body{
 }
 
 /*code for stopwatch file*/
+.heading h1{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Times New Roman', Times, serif;
+    width: fit-content;
+    margin-top: 10%;
+}
 .mainContainer{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 12%;
+    margin-top: 20px;
     width: fit-content;
     height: fit-content;
     background-color: rgb(189, 189, 189);
     border-radius: 8px;
 }
+
 form{
     display: flex;
     flex-direction: row;
@@ -121,6 +130,7 @@ form{
     height: 80px;
     width: 150px;
     font-size: 16pt;
+    font-family: 'Times New Roman', Times, serif;
     border: none;
     box-shadow: 1px 2px 1px 1px black;
     border-radius: 10px;
