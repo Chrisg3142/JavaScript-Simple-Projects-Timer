@@ -52,6 +52,7 @@ function ResetClock()
 {
     StopClock();
     outputContainer.style.display = "none";
+    inputContainer.style.display = "flex";
     document.getElementById("inputHour").value = "";
     document.getElementById("inputMinute").value = "";
     document.getElementById("inputSecond").value = "";
