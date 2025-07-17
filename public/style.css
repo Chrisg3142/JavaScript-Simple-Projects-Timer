@@ -56,12 +56,14 @@ body{
 .stopwatch-buttons{
     margin-top: 20px;
 }
-.input-items{
+.input-items, .stopwatch{
     display: flex;
     margin: 10px;
+    border-radius: 8px;
+    padding: 10px 10px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.input-box{
+.input-box, .stop-box{
     width: 108px;
     height: 65px;
     margin: 5px;
@@ -71,16 +73,18 @@ body{
     outline: none;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
-.input-group{
+.input-group, .stop-group{
     display: flex;
     flex-direction: column;
 }
-.input-label{
+.input-label, .stop-label{
     margin: 5px;
     font-size: 30px;
 }
 #outputContainer{
     display: none;
+    border-radius: 8px;
+    padding: 10px 10px;
 }
 .project-heading{
     margin-bottom: 60px;
@@ -88,4 +92,42 @@ body{
 .project-heading h1{
     text-transform: capitalize;
     font-size: 40px;
+}
+
+.mainContainer{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(189, 189, 189);
+    border-radius: 8px;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+}
+.mainContainer #stopwatchForm input, .mainContainer #timerForm input{
+    height: 80px;
+    width: 150px;
+    font-size: 16pt;
+    border: none;
+    box-shadow: 1px 2px 1px 1px black;
+    border-radius: 10px;
+}
+.mainContainer #stopwatchForm input{
+    display: flex;
+    background-color: bisque;
+    color: black;
+    margin-right: 10px;
+    margin-left: auto;
+}
+.mainContainer #timerForm input{
+    display: flex;
+    background-color: blueviolet;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
 }

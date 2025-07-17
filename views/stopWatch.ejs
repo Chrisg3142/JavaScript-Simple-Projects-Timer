@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+<body>
+    <div class="watch-container">
+        <div class="stopwatch">
+            <div class="stop-group">
+                <label class="stop-label">Hour:</label>
+                <span id="stopHour" name="hours" class="stop-box">00</span>
+            </div>
+            <div class="stop-group">
+                <label class="stop-label">Minute:</label>
+                <span id="stopMinute" name="minutes" class="stop-box">00</span>
+            </div>
+            <div class="stop-group">
+                <label class="stop-label">Second:</label>
+                <span id="stopSecond" name="seconds" class="stop-box">00</span>
+            </div>
+        </div>
+        <div class="stopwatch-buttons">
+            <button class="clock-button" id="startBtn">Start</button>
+            <button class="clock-button" id="stopBtn">Stop</button>
+            <button class="clock-button" id="reset">Reset</button>
+        </div>
+    </div>
+    <script src="/stopWatch.js"></script>
+</body>
+</html>

@@ -8,7 +8,10 @@ var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
 var timerApp;
 var outputContainer = document.getElementById("outputContainer");
+var inputContainer = document.getElementById("inputContainer");
 
+//function that uses format function and gets value from input and starts clokc with
+//values then subracts from each number
 function StartClock()
 {
     inputHour = Number(document.getElementById("inputHour").value);
@@ -21,6 +24,7 @@ function StartClock()
         outputMinute.innerHTML = FormatTime(inputMinute);
         outputSecond.innerHTML = FormatTime(inputSecond);
         outputContainer.style.display = "flex";
+        inputContainer.style.display = "none";
         startBtn.style.display = "none";
         stopBtn.style.display = "inline-block";
         timerApp = setInterval(myClock, 1000);
@@ -61,16 +65,17 @@ function ResetClock()
     
 function myClock()
 {  
+    //starts with seconds and constantly changes the time when not equal to zero
     if(inputSecond > 0){
         inputSecond--;
         outputSecond.innerHTML = FormatTime(inputSecond);
-    }else{
+    }else{ //next goes to minutes
         if(inputMinute > 0){
             inputMinute--;
             outputMinute.innerHTML = FormatTime(inputMinute);
             inputSecond = 59;
             outputSecond.innerHTML = FormatTime(inputSecond);
-        }else{
+        }else{ //next goes to hours
             if(inputHour > 0){
                 inputHour--;
                 outputHour.innerHTML = FormatTime(inputHour);
@@ -78,15 +83,18 @@ function myClock()
                 outputMinute.innerHTML = FormatTime(inputMinute);
                 inputSecond = 59;
                 outputSecond.innerHTML = FormatTime(inputSecond);
-            }else{
+            }else{//when the timer ends it stops the clock and plays a sound
                 StopClock();
-                new Audio('./beep.mp3').play()
+                new Audio('./beep.mp3').play();
+                inputContainer.style.display = "flex"; //show the original input container when timer ends
+                outputContainer.style.display = "none"
                 return;
             }
         }
     }
 }
 
+//function to put time into proper format
 function FormatTime(time)
 {
     var formatedTime
@@ -100,3 +108,4 @@ function FormatTime(time)
     }
     return formatedTime
 }
+

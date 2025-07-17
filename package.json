@@ -1,0 +1,26 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "<h1>JavaScript Simple Projects Online Digital Clock With Second</h1> <p>A timer app is a tool that helps you keep track of time. It allows you to set a specific amount of time and counts down until the time is up. Timer apps are useful for a variety of tasks, such as timing your work sessions or workouts, cooking, and more. <a target=\"_blank\" href=\"https://www.insidethediv.com/javascript-projects-for-beginners-with-source-code-online-timer-app\"><b>Read more</b></a> </p>",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chrisg3142/JavaScript-Simple-Projects-Timer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chrisg3142/JavaScript-Simple-Projects-Timer/issues"
+  },
+  "homepage": "https://github.com/Chrisg3142/JavaScript-Simple-Projects-Timer#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
