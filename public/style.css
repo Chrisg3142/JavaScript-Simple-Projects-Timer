@@ -58,10 +58,17 @@ body{
 }
 .input-items, .stopwatch{
     display: flex;
-    margin: 10px;
     border-radius: 8px;
     padding: 10px 10px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.stopwatch{
+    margin-top: 10px;
+}
+
+.input-items{
+    margin-top: 0px;
 }
 .input-box, .stop-box{
     width: 108px;
@@ -87,13 +94,14 @@ body{
     padding: 10px 10px;
 }
 .project-heading{
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 .project-heading h1{
     text-transform: capitalize;
     font-size: 40px;
 }
 
+/*code for stopwatch file*/
 .mainContainer{
     display: flex;
     margin-left: auto;
@@ -109,7 +117,7 @@ form{
     flex-direction: row;
     padding: 10px 10px;
 }
-.mainContainer #stopwatchForm input, .mainContainer #timerForm input{
+.mainContainer #stopwatchForm input, .mainContainer #timerForm input, #indexForm input{
     height: 80px;
     width: 150px;
     font-size: 16pt;
